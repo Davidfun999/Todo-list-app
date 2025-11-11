@@ -47,12 +47,17 @@ router.patch('/:id', async (req, res) => {
     }
 });
 // delete a todo
+
+// CÓ THỂ BẠN SAI Ở ĐƯỜNG DẪN NÀY
 router.delete('/:id', async (req, res) => {
-    try {
-        const todo = await Todo.findById(req.params.id);
-        res.json({ message: 'Todo deleted' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+  try {
+    const todo = await Todo.findByIdAndDelete(req.params.id);
+    if (!todo) {
+      return res.status(404).json({ message: "Todo not found" });
+    }
+    res.status(200).json({ message: "Todo deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 export default router;
