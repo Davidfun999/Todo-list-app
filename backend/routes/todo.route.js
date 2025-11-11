@@ -47,7 +47,6 @@ router.patch('/:id', async (req, res) => {
     }
 });
 // delete a todo
-
 // CÓ THỂ BẠN SAI Ở ĐƯỜNG DẪN NÀY
 router.delete('/:id', async (req, res) => {
   try {
